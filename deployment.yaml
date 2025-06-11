@@ -37,12 +37,12 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: gotify
+        - name: gotify-data
           mountPath: /app/data
       volumes:
-      - name: gotify
+      - name: gotify-data
         persistentVolumeClaim:
-          claimName: gotify
+          claimName: gotify-data
 ---
 apiVersion: v1
 kind: Service
@@ -66,7 +66,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: gotify
+  name: gotify-data
   namespace: gotify
   labels:
     app: gotify
